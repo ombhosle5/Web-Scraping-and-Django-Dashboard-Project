@@ -2,8 +2,9 @@
 
 A Python-based web scraping project that extracts quotes from [quotes.toscrape.com](https://quotes.toscrape.com/) and displays them in a Django web dashboard.
 
-## image
-<img width="1920" height="1080" alt="Dashboard " src="https://github.com/user-attachments/assets/e5c4e939-4d19-411c-be30-0c89cc25c222" />
+## Image
+<img width="1920" height="1080" alt="Dashboard " src="https://github.com/user-attachments/assets/9cbcd065-7316-4c52-ad16-0a33dd9e3e53" />
+
 
 ## Project Structure
 ```
