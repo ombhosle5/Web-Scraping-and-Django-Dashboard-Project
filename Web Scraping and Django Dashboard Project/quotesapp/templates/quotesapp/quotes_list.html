@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a5f28dff 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .tag {
+            background: #e8eaf6;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        
+        .profile-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        
+        .profile-link:hover {
+            background: #764ba2;
+        }
+        
+        .stats {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .stats-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Quotes Dashboard</h1>
+            <p>Web Scraped Quotes Collection</p>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stats-number">{{ total_quotes }}</div>
+                <div>Total Quotes Scraped</div>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 45%;">Quote</th>
+                        <th style="width: 15%;">Author</th>
+                        <th style="width: 25%;">Tags</th>
+                        <th style="width: 15%;">Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for quote in quotes %}
+                    <tr>
+                        <td class="quote-text">"{{ quote.quote }}"</td>
+                        <td class="author-name">{{ quote.author }}</td>
+                        <td>
+                            <div class="tags">
+                                {% for tag in quote.tags %}
+                                    <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{{ quote.author_profile }}" 
+                            class="profile-link" 
+                            target="_blank">View Profile</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
